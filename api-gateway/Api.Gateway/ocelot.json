@@ -1,0 +1,45 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/hello",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/hello",
+      "UpstreamHttpMethod": [ "GET" ],
+      "ServiceName": "hello-service",
+      "UseServiceDiscovery": true,
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "hello-region"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "MedyanKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/bye",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/bye",
+      "UpstreamHttpMethod": [ "GET" ],
+      "ServiceName": "bye-service",
+      "UseServiceDiscovery": true,
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "MedyanKey",
+        "AllowedScopes": []
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "109.172.84.212",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}
